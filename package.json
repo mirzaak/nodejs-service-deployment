@@ -1,0 +1,10 @@
+{
+  "name": "nodejs-service-deployment",
+  "version": "1.0.0",
+  "description": "Simple Node.js service deployed to a server with GitHub Actions",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "license": "MIT"
+}

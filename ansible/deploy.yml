@@ -1,0 +1,24 @@
+- name: Deploy Node.js app
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install Node.js and git
+      apt:
+        name: [nodejs, npm, git]
+        state: present
+        update_cache: true
+
+    - name: Install pm2
+      npm:
+        name: pm2
+        global: true
+
+    - name: Clone the repo
+      git:
+        repo: https://github.com/mirzaak/nodejs-service-deployment.git
+        dest: /opt/app
+        force: true
+
+    - name: Start or restart the app
+      shell: pm2 restart app || pm2 start /opt/app/index.js --name app
